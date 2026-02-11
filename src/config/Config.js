@@ -133,7 +133,7 @@ export const formacao = [
 
 // Define os dados do contato
 export const contatos = {
-  email: "contato@seuescritorio.com",
+  email: "lilianateixeirafranchini@gmail.com",
   whatsapp: "5531999859901", 
   linkedin: "https://www.linkedin.com/in/seu-perfil/",
 };
