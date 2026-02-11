@@ -1,0 +1,70 @@
+@import "./variables.css";
+
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--bg) 97%, var(--accent) 3%) 0%,
+    var(--bg) 60%,
+    color-mix(in oklab, var(--bg) 98%, var(--accent) 2%) 100%
+  );
+  color: var(--text);
+  font-family: "Source Sans 3", "Helvetica Neue", Arial, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Noto Sans";
+  line-height: 1.6;
+  letter-spacing: 0.2px;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--accent) 70%, transparent);
+}
+
+::selection {
+  background: color-mix(in srgb, var(--accent) 30%, transparent);
+  color: var(--text);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text);
+  letter-spacing: 0.4px;
+  font-family: "Cormorant Garamond", "Times New Roman", ui-serif, serif;
+}
+
+section > header h1 {
+  color: color-mix(in oklab, var(--accent) 85%, var(--text));
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+}
+
+.main-content {
+  margin-left: 72px;
+  margin-right: 24px;
+  max-width: 100%;
+  padding: 32px 24px 56px;
+  transition: margin 420ms var(--sb-ease);
+}
+
+.main-content.sidebar-expanded {
+  margin-left: 240px;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 64px;
+    padding: 24px 16px 40px;
+  }
+}

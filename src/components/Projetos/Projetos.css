@@ -1,0 +1,254 @@
+/* ===== Projetos / Áreas de atuação — Carousel ===== */
+
+.projetos {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+}
+
+.projetos__header {
+  padding-left: 16px;
+  border-left: 3px solid var(--accent);
+  margin-bottom: 24px;
+}
+
+.projetos__header h1 {
+  margin: 0 0 8px;
+  font-size: 2rem;
+}
+
+.projetos__header p {
+  margin: 0;
+  opacity: 0.85;
+  line-height: 1.5;
+}
+
+/* ---------- Carousel wrapper ---------- */
+.projetos__carousel {
+  position: relative;
+}
+
+.projetos__track-wrap {
+  overflow: hidden;
+  width: 100%;
+}
+
+.projetos__track {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  transition: transform 400ms cubic-bezier(.25, .9, .3, 1);
+  will-change: transform;
+}
+
+/* ---------- Single slide ---------- */
+.projeto-card {
+  box-sizing: border-box;
+  min-width: 100%;
+  max-width: 100%;
+  flex: 0 0 100%;
+  display: flex;
+  flex-direction: column;
+  background: color-mix(in oklab, var(--surface) 96%, white 4%);
+  border: 1px solid color-mix(in oklab, var(--border) 85%, transparent);
+  border-radius: 12px;
+  padding: 32px 36px;
+  color: var(--text);
+  transition: border-color 180ms ease, background 180ms ease;
+}
+
+/* ---- top row: icon + area label ---- */
+.projeto-card__top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.projeto-card__icon {
+  display: inline-flex;
+  align-items: center;
+  color: var(--accent);
+  font-size: 1.3rem;
+}
+
+.projeto-card__label {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: color-mix(in oklab, var(--accent) 60%, var(--text));
+  user-select: none;
+  font-family: "Cormorant Garamond", "Times New Roman", ui-serif, serif;
+}
+
+.projeto-card__content {
+  min-width: 0;
+}
+
+.projeto-card__title {
+  margin: 0 0 8px;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.projeto-card__desc {
+  margin: 0 0 14px;
+  opacity: 0.9;
+  line-height: 1.6;
+  flex: 1;
+}
+
+.projeto-card__techs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 14px;
+}
+
+.tag {
+  font-size: 0.72rem;
+  padding: 5px 10px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in oklab, var(--accent) 18%, var(--border));
+  background: transparent;
+  color: color-mix(in oklab, var(--text) 80%, var(--accent) 20%);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 8px;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  background: color-mix(in oklab, var(--accent) 12%, white);
+  text-decoration: none;
+  font-weight: 500;
+  color: var(--text);
+}
+.btn:hover {
+  border-color: color-mix(in oklab, var(--accent) 45%, var(--border));
+}
+
+.projeto-card__thumb {
+  margin-top: 14px;
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+}
+.projeto-card__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ---------- Nav arrows ---------- */
+.carousel__nav {
+  all: unset;
+  cursor: pointer;
+  position: absolute;
+  top: calc(50% - 20px);
+  transform: translateY(-50%);
+  z-index: 10;
+  display: inline-grid;
+  place-items: center;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 1.3rem;
+  padding: 8px;
+  opacity: 0.6;
+  transition: opacity 160ms ease;
+}
+.carousel__nav:hover { opacity: 1; }
+.carousel__nav--prev { left: -48px; }
+.carousel__nav--next { right: -48px; }
+.carousel__nav:disabled { opacity: 0.2; cursor: default; }
+
+/* ---------- Controls row (arrows + dots) ---------- */
+.carousel__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.carousel__nav--mobile { display: none; }
+
+/* ---------- Dot indicators ---------- */
+.carousel__dots {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+.carousel__dot {
+  all: unset;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--border) 40%, transparent);
+  cursor: pointer;
+  transition: background 160ms ease;
+}
+.carousel__dot.is-active {
+  background: var(--accent);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1100px) {
+  .carousel__nav--prev { left: -32px; }
+  .carousel__nav--next { right: -32px; }
+  .projetos {
+    padding: 48px 48px 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .projetos {
+    padding: 32px 16px 48px;
+  }
+  .projetos__header h1 {
+    font-size: 1.6rem;
+    margin-bottom: 0;
+  }
+  .projetos__header p {
+    display: none;
+  }
+  .projetos__header {
+    margin-bottom: 16px;
+  }
+  .projeto-card {
+    padding: 20px 18px;
+  }
+  .projeto-card__techs {
+    margin-bottom: 0;
+  }
+  .projeto-card__label {
+    font-size: 1.15rem;
+  }
+  .projeto-card__icon {
+    font-size: 1rem;
+  }
+  .projeto-card__desc {
+    font-size: 0.92rem;
+    margin-bottom: 10px;
+  }
+  .tag {
+    font-size: 0.65rem;
+    padding: 4px 8px;
+  }
+  /* Hide desktop arrows, show mobile arrows */
+  .carousel__nav--desktop { display: none; }
+  .carousel__nav--mobile {
+    display: inline-grid;
+    position: static;
+    transform: none;
+    font-size: 1rem;
+  }
+}

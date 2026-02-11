@@ -1,0 +1,251 @@
+/* ===== FAQ — Minimal Modern Accordion ===== */
+
+.faq {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+}
+
+.faq__header {
+  padding-left: 16px;
+  border-left: 3px solid var(--accent);
+  margin-bottom: 40px;
+}
+
+.faq__header h1 {
+  margin: 0 0 8px;
+  font-size: 2rem;
+}
+
+.faq__header p {
+  margin: 0;
+  opacity: 0.65;
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+/* ---------- List ---------- */
+.faq__list {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- Item ---------- */
+.faq-item {
+  cursor: pointer;
+  border-top: 1px solid color-mix(in oklab, var(--border) 50%, transparent);
+}
+
+.faq-item:last-child {
+  border-bottom: 1px solid color-mix(in oklab, var(--border) 50%, transparent);
+}
+
+/* ---------- Question row ---------- */
+.faq-item__question {
+  all: unset;
+  box-sizing: border-box;
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  width: 100%;
+  padding: 24px 4px;
+  cursor: pointer;
+  user-select: none;
+  transition: opacity 180ms ease;
+}
+
+.faq-item:hover .faq-item__question {
+  opacity: 0.75;
+}
+
+.faq-item--active .faq-item__question {
+  opacity: 1;
+}
+
+.faq-item__number {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--accent);
+  opacity: 0.55;
+  flex-shrink: 0;
+  min-width: 28px;
+  transition: opacity 250ms ease;
+}
+
+.faq-item--active .faq-item__number {
+  opacity: 0.8;
+}
+
+.faq-item__text {
+  flex: 1;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--text);
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+.faq-item__chevron {
+  flex-shrink: 0;
+  font-size: 0.65rem;
+  color: var(--muted);
+  opacity: 0.4;
+  transition: transform 400ms cubic-bezier(.4, 0, .2, 1), opacity 200ms ease;
+}
+
+.faq-item:hover .faq-item__chevron {
+  opacity: 0.7;
+}
+
+.faq-item--active .faq-item__chevron {
+  transform: rotate(180deg);
+  opacity: 1;
+  color: var(--accent);
+}
+
+/* ---------- Answer area ---------- */
+.faq-item__answer-wrap {
+  overflow: hidden;
+}
+
+.faq-item__answer {
+  padding: 0 4px 28px 52px;
+  animation: faqReveal 400ms cubic-bezier(.4, 0, .2, 1);
+}
+
+/* ---------- Typing box ---------- */
+.faq-item__typing-box {
+  position: relative;
+  padding-left: 16px;
+}
+
+.faq-item__typing-box::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 4px;
+  bottom: 4px;
+  width: 2px;
+  background: color-mix(in oklab, var(--accent) 30%, transparent);
+  border-radius: 2px;
+}
+
+.typing-box__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  animation: faqFadeIn 300ms ease;
+}
+
+.typing-indicator {
+  display: flex;
+  gap: 3px;
+  align-items: center;
+}
+
+.typing-indicator span {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.6;
+  animation: typingBounce 1.4s infinite;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.typing-label {
+  font-size: 0.72rem;
+  color: var(--muted);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.7;
+}
+
+.typing-box__content {
+  line-height: 1.75;
+  color: var(--text);
+  opacity: 0.8;
+  font-size: 0.95rem;
+}
+
+.cursor {
+  display: inline-block;
+  margin-left: 1px;
+  animation: blink 1s infinite;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* ---------- Animations ---------- */
+@keyframes faqReveal {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes faqFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes typingBounce {
+  0%, 60%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-5px); }
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  .faq {
+    padding: 32px 16px 48px;
+  }
+
+  .faq__header {
+    margin-bottom: 28px;
+  }
+
+  .faq__header h1 {
+    font-size: 1.6rem;
+  }
+
+  .faq-item__question {
+    padding: 18px 2px;
+    gap: 14px;
+  }
+
+  .faq-item__number {
+    font-size: 1.1rem;
+    min-width: 22px;
+  }
+
+  .faq-item__text {
+    font-size: 0.98rem;
+  }
+
+  .faq-item__answer {
+    padding: 0 2px 22px 40px;
+  }
+
+  .typing-box__content {
+    font-size: 0.9rem;
+  }
+}
