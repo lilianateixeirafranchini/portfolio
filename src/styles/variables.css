@@ -2,8 +2,8 @@
   /* Accessible Green palette (recommended) */
   --bg:        #E8F5EA; /* mais claro, suave */
   /* Warm Neutral: verde muito sutil com tom creme para suavizar contraste */
-  --sidebar:   #EEF5EE;
-  --sidebar-2: #E6EFE6;
+  --sidebar:   #F5FEFB;
+  --sidebar-2: #F0F8F5;
   /* softer surface to reduce white-on-green contrast */
   --surface:   #F7FBF5; /* subtle green-tinted surface */
   --border:    #A6C0A1; /* slightly softer border */
